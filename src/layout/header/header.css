@@ -1,0 +1,17 @@
+.header{
+    background-color: #5c6bc0;
+    height: 40px;
+    width: 100vw;
+    padding: 5px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.brand-name {
+    margin-left: 20px;
+    font-weight: 400;
+    font-size: 26px;
+    color :#FFF;
+    text-decoration: none;
+}
