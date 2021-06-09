@@ -8,9 +8,6 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateRows:'90vh',
     justifyItems:'center',
     alignItems:'center',
-    '& > * + *': {
-    //   marginLeft: theme.spacing(2),
-    },
   },
 }));
 
