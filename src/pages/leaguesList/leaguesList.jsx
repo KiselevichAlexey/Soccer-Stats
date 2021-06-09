@@ -8,11 +8,12 @@ import SearchForm from "components/searchForm";
 
 function LeaguesList(props) {
   const [search, setSearch] = useState(props.location.search.slice(8));
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [leagues,setLeagues] = useState([])
 
   useEffect(() => {
     async function fetchLeagues() {
+      setLoading(true)
       const url = `http://api.football-data.org/v2/competitions?plan=TIER_ONE`;
       await axios
         .get(url, {
