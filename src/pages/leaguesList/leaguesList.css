@@ -1,14 +1,4 @@
-.league-name{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2e7d32;
-    padding: 5px;
-    color : #fff;
-    font-size: 20px;
-    font-weight: 400;
-}
- 
+
 .grid{ 
     display: grid;
     gap: 15px;

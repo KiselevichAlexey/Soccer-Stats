@@ -35,7 +35,7 @@ function LeaguesList(props) {
     e.preventDefault();
     setSearch(e.target.search.value);
     props.history.push({
-      pathname: "/",
+      pathname: "/competitions",
       search: `?${e.target.search.value}`,
     });
   };
@@ -46,7 +46,6 @@ function LeaguesList(props) {
 
   return (
     <>
-      <div className="league-name">Лиги & Кубки</div>
       <SearchForm
         submit={handleSubmit}
         value={defaultSearchValue}

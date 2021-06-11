@@ -1,6 +1,30 @@
+
 .main-content {
     min-height: 90vh;
     margin: auto;
     background: #e3e5e68c;
     max-width: 1000px;
+  }
+  .nav-bar ul{
+    display: flex;
+    background-color: #081f2c;
+    justify-content: flex-start;
+    font-size: 20px;
+    font-weight: 400;
+  }
+ 
+  .nav-bar li {
+    padding: 5px;
+    border-right:solid 2px #00a9ce;
+    list-style:none;
+    margin: 0 5px;
+  }
+  .nav-bar li a {
+    color: #fff;
+  }
+  .nav-bar li  :hover {
+    border-bottom: 5px solid #00a8cebe  ;
+  }
+  .active {
+    border-bottom: 5px solid #00a9ce  ;
   }

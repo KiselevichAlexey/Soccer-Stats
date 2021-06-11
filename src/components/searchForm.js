@@ -85,7 +85,6 @@ export default function SearchForm (props){
       variant="contained"
       style={{ margin:'0 10px' }}
       type="submit"
-      color="primary"
     >
       Найти
     </Button>
