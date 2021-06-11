@@ -2,44 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingProgress from "components/loadingProgress";
 import SearchForm from "components/searchForm";
-import { Link } from "react-router-dom";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import IconButton from "@material-ui/core/IconButton";
-import { Divider } from "@material-ui/core";
 import Pagination from "components/pagination";
-
-function TeamItem(props) {
-  const { name, schortName, crestUrl, area, id } = props.team;
-  return (
-    <Link to={`/teams/${id}`}>
-      <ListItem style={{ background: "rgba(255, 255, 255, 0.807)" }}>
-        <ListItemAvatar>
-          <img
-            style={{ maxWidth: 50, height: 50 }}
-            src={crestUrl}
-            alt={schortName}
-          />
-        </ListItemAvatar>
-        <ListItemText
-          style={{ color: "#333" }}
-          primary={name.toUpperCase()}
-          secondary={area.name}
-        />
-        <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="forward">
-            <ArrowForwardIosIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-      <Divider />
-    </Link>
-  );
-}
+import TeamItem from "./team";
 
 function TeamsList(props) {
   const defaultSearchValue = props.location.search.slice(1);
@@ -81,6 +46,7 @@ function TeamsList(props) {
   const teamsList = data
     .filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
     .map((el) => <TeamItem key={el.id} team={el}></TeamItem>);
+
   const itemInPage = 20;
   const pageList = teamsList.slice(
     (page - 1) * itemInPage,
