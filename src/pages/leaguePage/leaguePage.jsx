@@ -10,7 +10,7 @@ export default function LeaguePage(props) {
   useEffect(() => {
     async function fetchLeague() {
       setLoading(true)  
-      const url = `http://api.football-data.org/v2${props.match.url}`;
+      const url = `http://api.football-data.org/v2/teams?areas=2077`;
       await axios
         .get(url, {
           headers: { "X-Auth-Token": "f56fb14a54c045df871baee1e6130304" },
@@ -24,7 +24,7 @@ export default function LeaguePage(props) {
     }
     fetchLeague();
   }, []);
-
+console.log(data);
   return (
     <div className="main-container">
         <Switch>
