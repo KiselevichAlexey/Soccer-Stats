@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
+    boxShadow:'0 0 5px 4px rgba(0,0,0,0.2)',
     right: 0,
     width: "200px",
     height: "35px",
@@ -85,6 +86,7 @@ export default function SearchForm (props){
       variant="contained"
       style={{ margin:'0 10px' }}
       type="submit"
+      color='primary'
     >
       Найти
     </Button>

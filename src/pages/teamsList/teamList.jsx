@@ -55,7 +55,7 @@ function TeamsList(props) {
   return (
     <>
       <SearchForm submit={handleSubmit} value={defaultSearchValue} />
-      {loading ? <LoadingProgress /> : <List> {pageList} </List>}
+      {loading ? <LoadingProgress /> : <List style={{maxWidth:'600px',margin:'auto'}}> {pageList} </List>}
       <Pagination
         changePage={(event, value) => setPage(value)}
         count={Math.ceil(teamsList.length / itemInPage)}
