@@ -1,20 +1,24 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination from "@material-ui/lab/Pagination"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+      display:'flex',
+      justifyContent:'center',
+      margin:'auto',
+      '& > *': {
       marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2),
     },
   },
 }));
 
-export default function Pagination() {
+export default function MyPagination(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Pagination  count={10} color="secondary" />
+      <Pagination  onChange={props.changePage} count={props.count} color="primary" />
     </div>
   );
 }

@@ -11,6 +11,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import { Divider } from "@material-ui/core";
+import Pagination from "components/pagination";
 
 function TeamItem(props) {
   const { name, schortName, crestUrl, area, id } = props.team;
@@ -45,6 +46,7 @@ function TeamsList(props) {
   const [search, setSearch] = useState(defaultSearchValue);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchTeams() {
@@ -69,6 +71,7 @@ function TeamsList(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(e.target.search.value);
+    setPage(1);
     props.history.push({
       pathname: "/teams",
       search: `?${e.target.search.value}`,
@@ -78,11 +81,19 @@ function TeamsList(props) {
   const teamsList = data
     .filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
     .map((el) => <TeamItem key={el.id} team={el}></TeamItem>);
-
+  const itemInPage = 20;
+  const pageList = teamsList.slice(
+    (page - 1) * itemInPage,
+    (page - 1) * itemInPage + itemInPage
+  );
   return (
     <>
       <SearchForm submit={handleSubmit} value={defaultSearchValue} />
-      {loading ? <LoadingProgress /> : <List> {teamsList} </List>}
+      {loading ? <LoadingProgress /> : <List> {pageList} </List>}
+      <Pagination
+        changePage={(event, value) => setPage(value)}
+        count={Math.ceil(teamsList.length / itemInPage)}
+      />
     </>
   );
 }
