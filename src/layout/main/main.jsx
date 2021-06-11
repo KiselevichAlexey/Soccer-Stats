@@ -1,5 +1,6 @@
 import LeaguePage from "pages/leaguePage/leaguePage";
 import LeaguesList from "pages/leaguesList";
+import TeamsList from "pages/teamsList/teamList";
 import React from "react";
 import { Route, Switch } from "react-router";
 import { NavLink } from "react-router-dom";
@@ -9,6 +10,7 @@ const routes = (
   <Switch>
     <Route exact path="/competitions" component={LeaguesList} />
     <Route path="/competitions/:id/" component={LeaguePage} />
+    <Route path='/teams' component={TeamsList}/>
   </Switch>
 );
 function Main() {
