@@ -25,12 +25,11 @@ export default function LeaguePage(props) {
     fetchLeague();
   }, []);
 
- console.log(data);
   return (
     <div className="main-container">
         <Switch>
-          <Route exact path={`${this.props.match.url}/`} component='' />
-          <Route path={this.props.match.url + "/matches"} component=''  />
+          <Route exact path={`${props.match.url}/`}  />
+          <Route path={`${props.match.url} /matches`}   />
         </Switch>
     </div>
   );

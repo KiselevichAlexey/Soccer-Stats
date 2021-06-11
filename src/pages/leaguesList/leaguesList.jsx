@@ -2,32 +2,43 @@ import React, { useEffect, useState } from "react";
 import Card from "pages/leaguesList/card/card";
 import "./leaguesList.css";
 import axios from "axios";
-
 import LoadingProgress from "components/loadingProgress";
 import SearchForm from "components/searchForm";
 
 function LeaguesList(props) {
-  const [search, setSearch] = useState(props.location.search.slice(8));
+  const defaultSearchValue =props.location.search.slice(1)
+  const [search, setSearch] = useState(defaultSearchValue);
   const [loading, setLoading] = useState(false);
-  const [leagues,setLeagues] = useState([])
+  const [leagues, setLeagues] = useState([]);
 
   useEffect(() => {
     async function fetchLeagues() {
-      setLoading(true)
+      setLoading(true);
       const url = `http://api.football-data.org/v2/competitions?plan=TIER_ONE`;
       await axios
         .get(url, {
           headers: { "X-Auth-Token": "f56fb14a54c045df871baee1e6130304" },
           type: "GET",
         })
-        .then((res) => {
-          setLeagues(res.data.competitions)
-          setLoading(false);
-        })
-        .catch((e) => console.error(e));
+        .then(
+          (res) => {
+            setLeagues(res.data.competitions);
+            setLoading(false);
+          },
+          (error) => console.log(error)
+        );
     }
     fetchLeagues();
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(e.target.search.value);
+    props.history.push({
+      pathname: "/",
+      search: `?${e.target.search.value}`,
+    });
+  };
 
   const leaguesList = leagues
     .filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
@@ -35,9 +46,17 @@ function LeaguesList(props) {
 
   return (
     <>
-     <div className="league-name">Лиги & Кубки</div>
-     <SearchForm value={props.location.search.slice(8)}/>
-      {loading ? <LoadingProgress /> :<div className="grid"> {leaguesList}</div>};
+      <div className="league-name">Лиги & Кубки</div>
+      <SearchForm
+        submit={handleSubmit}
+        value={defaultSearchValue}
+      />
+      {loading ? (
+        <LoadingProgress />
+      ) : (
+        <div className="grid"> {leaguesList} </div>
+      )}
+      ;
     </>
   );
 }
