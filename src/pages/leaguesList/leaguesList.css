@@ -6,12 +6,12 @@
     align-items: center;
     margin-bottom: 10px;
   }
-  @media screen and (min-width:621px) {
+  @media screen and (min-width:610px) {
     .grid{
       grid-template-columns: repeat(4,140px);
     }
   }
-  @media screen and (max-width:620px) {
+  @media screen and (max-width:609px) {
     .grid{
       grid-template-columns: repeat(auto-fit,140px) ;
     }

@@ -14,7 +14,7 @@ function LeaguesList(props) {
   useEffect(() => {
     async function fetchLeagues() {
       setLoading(true);
-      const url = `http://api.football-data.org/v2/competitions?plan=TIER_ONE`;
+      const url = `http://api.football-data.org/v2/competitions?areas=2077&plan=TIER_ONE`;
       await axios
         .get(url, {
           headers: { "X-Auth-Token": "f56fb14a54c045df871baee1e6130304" },
@@ -30,7 +30,6 @@ function LeaguesList(props) {
     }
     fetchLeagues();
   }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(e.target.search.value);
