@@ -12,12 +12,12 @@ function TeamsList(props) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
- 
+
   useEffect(() => {
     async function fetchTeams() {
       setLoading(true);
       let url = `http://api.football-data.org/v2/teams?areas=2077`;
-      if (props.league){
+      if (props.league) {
         url = `http://api.football-data.org/v2/${props.location.pathname}?season=2020`;
       }
       await axios
@@ -34,7 +34,7 @@ function TeamsList(props) {
         );
     }
     fetchTeams();
-  }, [props.league,props.location.pathname]);
+  }, [props.league, props.location.pathname]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
