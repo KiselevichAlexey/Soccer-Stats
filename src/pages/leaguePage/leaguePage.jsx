@@ -6,11 +6,9 @@ import TeamsList from "pages/teamsList";
 
 export default function LeaguePage(props) {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+  console.log(data);
   useEffect(() => {
     async function fetchLeague() {
-      setLoading(true);
       const url = `http://api.football-data.org/v2${props.match.url}`;
       await axios
         .get(url, {
@@ -19,12 +17,11 @@ export default function LeaguePage(props) {
         })
         .then((res) => {
           setData(res.data);
-          setLoading(false);
         })
         .catch((e) => console.error(e));
     }
     fetchLeague();
-  }, []);
+  }, [props.match.url]);
 
   return (
     <div className="main-container">
