@@ -18,7 +18,7 @@ const leagueLogo = {
 function Card(props) {
   const { emblemUrl, id, code, name, area } = props.card;
   return (
-    <Link to={{pathname: 'competitions/' + id,}}>
+    <Link to={{pathname: `competitions/${id}/teams`,}}>
       <div className="card">
         <div className="content">
           <div className="card-img">

@@ -25,6 +25,6 @@
   .nav-bar li  :hover {
     border-bottom: 5px solid #00a8cebe  ;
   }
-  .active {
+  li .active {
     border-bottom: 5px solid #00a9ce  ;
   }

@@ -8,3 +8,29 @@
     background-color: #081f2c;
     vertical-align: center;
 }
+.league-nav {
+    display: grid;
+    margin: auto;
+    max-width: 800px;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: space-around;
+    gap: 10px;
+}
+.nav-btn {
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #081f2c;
+}
+a .nav-btn{
+    color: #081f2c;
+}
+a .nav-btn:hover{
+    color: #00a9ce;
+    border-color: #00a9ce;
+}
+a.active .nav-btn{
+    background-color: #00a9ce;
+    color: #fff;
+    border-color: #00a9ce;
+}

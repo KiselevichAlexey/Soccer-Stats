@@ -12,13 +12,13 @@ function TeamsList(props) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  console.log(props);
+ 
   useEffect(() => {
     async function fetchTeams() {
       setLoading(true);
       let url = `http://api.football-data.org/v2/teams?areas=2077`;
       if (props.league)
-        url = `http://api.football-data.org/v2/${props.location.pathname}/teams`;
+        url = `http://api.football-data.org/v2/${props.location.pathname}`;
 
       await axios
         .get(url, {
