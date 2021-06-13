@@ -11,7 +11,7 @@ import { Divider } from "@material-ui/core";
 export default function TeamItem(props) {
   const { name, shortName, crestUrl, area, id } = props.team;
   return (
-    <Link to={`/teams/${id}`}>
+    <Link to={`/teams/${id}/matches`}>
       <ListItem style={{ background: "rgba(255, 255, 255, 0.807)" }}>
         <ListItemAvatar>
           <img

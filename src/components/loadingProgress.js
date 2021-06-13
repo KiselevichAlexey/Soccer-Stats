@@ -14,7 +14,7 @@ export default function LoadingProgress() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CircularProgress size={200} thickness={2}/>
+      <CircularProgress color='secondary' size={200} thickness={2}/>
     </div>
   );
 }
