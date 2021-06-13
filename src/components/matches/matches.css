@@ -1,0 +1,37 @@
+.match-table {
+    max-width: 800px;
+    width: 100%;
+    margin: 10px auto;
+    background-color: #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.match-table tr{
+    height: 45px;
+}
+.date{
+    text-align: center;
+}
+.score {
+    text-align: center;
+    width: 60px;
+}
+.home-teams {
+    text-align: right;
+}
+.away-team {
+    text-align: left;
+}
+tbody tr:nth-child(even) {
+    background: #f0f0f2;
+}
+th {
+   background-color:  #081f2c;
+   color: #fff;
+}
+  
+th , td{
+    border-bottom: 1px solid #cecfd5;
+    border-left:1px solid #cecfd5 ;
+    padding: 5px;
+}

@@ -3,10 +3,10 @@ import { NavLink, Route, Switch } from "react-router-dom";
 import "pages/leaguePage/leaguePage.css";
 import axios from "axios";
 import TeamsList from "pages/teamsList";
-
+import MatchTable from "components/matches/matches";
 export default function LeaguePage(props) {
   const [data, setData] = useState([]);
-  console.log(data);
+
   useEffect(() => {
     async function fetchLeague() {
       const url = `http://api.football-data.org/v2${props.match.url}`;
@@ -40,7 +40,10 @@ export default function LeaguePage(props) {
           path={`${props.match.url}/teams`}
           render={(routeProps) => <TeamsList league={true} {...routeProps} />}
         />
-        <Route path={`${props.match.url} /matches`} />
+        <Route
+          path={`${props.match.url}/matches`}
+          render={(routeProps) => <MatchTable {...routeProps} />}
+        />
       </Switch>
     </div>
   );
