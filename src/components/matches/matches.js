@@ -2,10 +2,11 @@ import axios from "axios";
 import LoadingProgress from "components/loadingProgress";
 import Pagination from "components/pagination";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./matches.css";
 
 function MatchTable(props) {
-  console.log(props);
+  
   return (
     <>
       <div>
@@ -19,14 +20,23 @@ function MatchTable(props) {
             </tr>
           </thead>
           <tbody>
-            {props.data.map((row) => (
-              <tr key={row.id}>
-                <td className="home-teams">{row.homeTeam.name}</td>
+            {props.data.map((item) => (
+              <tr key={item.id}>
+                <td className="home-teams">
+                <Link to={`/teams/${item.homeTeam.id}/matches`}>
+                  {item.homeTeam.name}
+                  </Link>
+                  </td>
                 <td className="score">
-                  {` ${row.score.fullTime.homeTeam} - ${row.score.fullTime.awayTeam}`}
+                  {` ${item.score.fullTime.homeTeam} - ${item.score.fullTime.awayTeam}`}
                 </td>
-                <td className="away-team">{row.awayTeam.name}</td>
-                <td className="date">{row.utcDate.slice(0, 10)}</td>
+                <td className="away-team">
+                  <Link to={`/teams/${item.awayTeam.id}/matches`}>
+                  {item.awayTeam.name}
+      
+                  </Link>
+                  </td>
+                <td className="date">{item.utcDate.slice(0, 10)}</td>
               </tr>
             ))}
           </tbody>
@@ -51,6 +61,7 @@ export default function MatchList(props) {
           type: "GET",
         })
         .then((res) => {
+          console.log(res.data);
           setMatches(res.data.matches);
           setLoading(false);
         })

@@ -35,3 +35,10 @@ th , td{
     border-left:1px solid #cecfd5 ;
     padding: 5px;
 }
+td a {
+    color :black;
+}
+td a:hover{
+    color :black;
+    background-color:  #00a8ce94;
+}
