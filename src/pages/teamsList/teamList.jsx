@@ -12,11 +12,14 @@ function TeamsList(props) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-
+  console.log(props);
   useEffect(() => {
     async function fetchTeams() {
       setLoading(true);
-      const url = `http://api.football-data.org/v2/teams?areas=2077`;
+      let url = `http://api.football-data.org/v2/teams?areas=2077`;
+      if (props.league)
+        url = `http://api.football-data.org/v2/${props.location.pathname}/teams`;
+
       await axios
         .get(url, {
           headers: { "X-Auth-Token": "f56fb14a54c045df871baee1e6130304" },
@@ -38,7 +41,7 @@ function TeamsList(props) {
     setSearch(e.target.search.value);
     setPage(1);
     props.history.push({
-      pathname: "/teams",
+      pathname: props.location.pathname,
       search: `?${e.target.search.value}`,
     });
   };
@@ -55,7 +58,11 @@ function TeamsList(props) {
   return (
     <>
       <SearchForm submit={handleSubmit} value={defaultSearchValue} />
-      {loading ? <LoadingProgress /> : <List style={{maxWidth:'600px',margin:'auto'}}> {pageList} </List>}
+      {loading ? (
+        <LoadingProgress />
+      ) : (
+        <List style={{ maxWidth: "600px", margin: "auto" }}>{pageList}</List>
+      )}
       <Pagination
         changePage={(event, value) => setPage(value)}
         count={Math.ceil(teamsList.length / itemInPage)}

@@ -1,0 +1,10 @@
+.league-name {
+    margin: 10px auto;
+    max-width: 800px;
+    color:#fff;
+    height: 40px;
+    font-size: large;
+    padding: 10px;
+    background-color: #081f2c;
+    vertical-align: center;
+}
