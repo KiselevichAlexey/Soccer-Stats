@@ -61,7 +61,7 @@ function TeamsList(props) {
       {loading ? (
         <LoadingProgress />
       ) : (
-        <List style={{ maxWidth: "600px", margin: "auto" }}>{pageList}</List>
+        <List style={{ maxWidth: "800px", margin: "auto" }}>{pageList}</List>
       )}
       <Pagination
         changePage={(event, value) => setPage(value)}
